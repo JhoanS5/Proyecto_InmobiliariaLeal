@@ -32,7 +32,22 @@ Plataforma web para gestión y visualización de propiedades inmobiliarias, desa
 git clone https://github.com/tuusuario/inmobiliaria-leal.git
 cd inmobiliaria-leal
 ```
+## Configura el backend
+* Crea un archivo .env en la carpeta /backend con tus variables de entorno:
+PORT=5000
+DB_HOST=localhost
+DB_USER=tu_usuario_mysql
+DB_PASSWORD=tu_password_mysql
+DB_NAME=inmobiliaria_leal
+JWT_SECRET=tu_clave_secreta
 
+* Instala dependencias y ejecuta el backend:
+```bash
+Copy
+cd backend
+npm install
+npx nodemon server.js
+```
 ---
 
 ## Configura el frontend
