@@ -5,7 +5,11 @@ const authMiddleware = require('../middlewares/authMiddleware');
 const roleMiddleware = require('../middlewares/roleMiddleware');
 const upload = require('../middlewares/upload');
 
-// Crear propiedad (con subida de hasta 5 imágenes)
+// RUTAS PÚBLICAS: obtener todas las propiedades y una por ID
+router.get('/', propertyController.getAll);
+router.get('/:id', propertyController.getById);
+
+// RUTAS PROTEGIDAS: solo para admins/empleados
 router.post(
   '/',
   authMiddleware,
@@ -14,23 +18,6 @@ router.post(
   propertyController.create
 );
 
-// Obtener todas las propiedades
-router.get(
-  '/',
-  authMiddleware,
-  roleMiddleware(['admin', 'super_admin']),
-  propertyController.getAll
-);
-
-// Obtener una propiedad por ID
-router.get(
-  '/:id',
-  authMiddleware,
-  roleMiddleware(['admin', 'super_admin']),
-  propertyController.getById
-);
-
-// Actualizar propiedad (con subida de hasta 5 imágenes)
 router.put(
   '/:id',
   authMiddleware,
@@ -39,7 +26,6 @@ router.put(
   propertyController.update
 );
 
-// Eliminar propiedad
 router.delete(
   '/:id',
   authMiddleware,

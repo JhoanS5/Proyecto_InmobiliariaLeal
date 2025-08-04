@@ -21,7 +21,8 @@ exports.create = async (req, res) => {
 
 exports.getAll = async (req, res) => {
   try {
-    const properties = await Property.findAll();
+    // Solo propiedades con status 'disponible'
+    const properties = await Property.findAll({ where: { status: 'disponible' } });
     const propertiesWithImages = properties.map(property => {
       let images = property.images;
       if (!Array.isArray(images)) {

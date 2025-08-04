@@ -9,12 +9,13 @@ import Footer from './components/Footer';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
+import './styles/theme.css';
 
 function App() {
   return (
     <Router>
       <Navbar />
-      <div style={{ minHeight: '80vh' }}>
+      <div style={{ minHeight: '80vh'}}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/propiedades" element={<PropertyCatalog />} />
